@@ -7,13 +7,16 @@
 //   node scripts/build-css.js dist    -> dist/assets/css/site.css (na `wald build`, productie)
 //   node scripts/build-css.js public  -> src/assets/css/site.css (vóór `wald grow`, want WaldJS
 //                                        serveert /assets/* uit src/assets/)
+// Op Oester staat OESTER in de omgeving en bouwt de oesterAdapter naar
+// .oester/output/client, dus gaat de bundel daarheen in plaats van naar dist.
 
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const target = process.argv[2] === 'public' ? 'src' : 'dist'
+const target =
+  process.argv[2] === 'public' ? 'src' : process.env.OESTER ? '.oester/output/client' : 'dist'
 const stylesDir = path.join(__dirname, '..', 'src', 'styles')
 const outDir = path.join(__dirname, '..', target, 'assets', 'css')
 const entry = path.join(stylesDir, 'site.css')

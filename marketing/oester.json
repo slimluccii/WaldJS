@@ -1,0 +1,5 @@
+{
+  "build": {
+    "command": "cd .. && pnpm --filter \"@waldjs/marketing...\" build"
+  }
+}

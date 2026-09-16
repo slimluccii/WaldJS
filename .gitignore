@@ -8,3 +8,4 @@ dist/
 *.vsix
 marketing/public/css/site.css
 marketing/src/assets/css/site.css
+.oester/
